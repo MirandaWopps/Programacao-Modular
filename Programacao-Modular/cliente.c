@@ -3,9 +3,9 @@
 #include "reutilizavel.h"
 
 
-void cadastraCliente(char* nome, int cpf){
+void cadastraCliente(char* nome, int cpf, int aluguel){
 	FILE* file = abreArq("Cadastros Clientes.txt","a");
-	fprintf(file, "%s | %d \n", nome, cpf);
+	fprintf(file, "%s | %d | Dias alugado: %d\n", nome, cpf, aluguel);
 
 	fclose(file);
 	printf("Dados guardados !\n");

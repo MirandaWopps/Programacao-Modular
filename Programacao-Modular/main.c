@@ -4,14 +4,12 @@
 #include "cliente.h"
 //#include "reutilizavel.h"
 
-
-
 int main(void) {
 
 	// Testando cadastro
 	cadastraCliente("Arnaldo", 456);
-
-	printf("Bem vindo a nossa Locadora !:)\n");
+	
+	printf("Bem vindo a nossa Locadora !:)\n"); // tst
 
 	printf("    1. War\n");
 	printf("    2. Combat\n");
@@ -23,8 +21,6 @@ int main(void) {
 	printf("    8. \n");
 	printf("    9. \n");
 	printf("    10. \n");
-
-
 
 
 	return 0;
