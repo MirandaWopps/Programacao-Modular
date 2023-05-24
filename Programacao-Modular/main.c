@@ -12,6 +12,7 @@ int main(void) {
 	cadastraCliente("Arnaldo", 456);
 
 	printf("Bem vindo a nossa Locadora !:)\n");
+
 	printf("    1. War\n");
 	printf("    2. Combat\n");
 	printf("    3. Clue\n");
