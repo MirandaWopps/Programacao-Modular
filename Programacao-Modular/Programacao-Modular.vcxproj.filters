@@ -16,6 +16,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="reutilizavel.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="cliente.c">
@@ -27,10 +30,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cliente.h">
-      <Filter>Resource Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="reutilizavel.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="estoque.h">
-      <Filter>Resource Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Cadastros Clientes.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
