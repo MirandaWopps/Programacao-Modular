@@ -24,6 +24,5 @@ int alugaPeriodoCliente(int dias){
 		printf("ERRO ! Sistema nao indentificou se aluguel =  1 ou 7 dias.\n");
 	}
 
-
 	return 0;
 }

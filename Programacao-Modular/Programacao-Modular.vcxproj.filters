@@ -43,5 +43,8 @@
     <Text Include="Cadastros Clientes.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="Estoque.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
