@@ -56,14 +56,14 @@ void controlaAlguel(char* nomeJogo , char ato) {
 
 int main(void) {
 	// variaveis quando cadastra cliente for ser utilizado
-	char cadastraNome[40];
-	int cpf;
+	char cadastraNome[40], endereco[80];
+	int cpf, celular;
 	int opcaoInterface = 0;
+	char valtest[11] = "1234567890";
 
-	// Testando cadastro
-	cadastraCliente("Arnaldo", 456);
 	
-
+	printf("%d\n", strlen(valtest) );
+	// Testando cadastro
 	printf("Bem vindo a nossa Locadora !:)\n"); // tst
 	printf("  - O que desejas ? \n");
 	printf("    1. Cadastrar cliente.\n");
@@ -78,13 +78,18 @@ int main(void) {
 			scanf("%s", cadastraNome);
 			printf("   Qual cpf do cliente ?\n");
 			scanf("%d", &cpf);
-			
-			cadastraCliente(cadastraNome, cpf);
+			printf("	Qual celular do cliente ?\n");
+			scanf("%d", &celular);
+			printf("	Qual endereco do cliente ?\n");
+			scanf("%s", endereco);
+
+			cadastraCliente(cadastraNome, cpf, celular, endereco);
 			printf("\n     /\n");
-			printf("   \\/ Cliente cadastrado com sucesso !\n");
+			printf("   \\/ Cliente cadastrado com sucesso !\n"); 
+
 
 		default:
-			printf("asdasd");
+			printf("Opção invalida.");
 			break;
 			
 	}

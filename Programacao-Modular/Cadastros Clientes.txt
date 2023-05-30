@@ -1,31 +1,22 @@
 #pragma once
-Arnaldo | 123456789 
-Arnaldo | 123456789 
-Arnaldo | 456 
-Arnaldo | 456 
-Arnaldo | 456 
-Arnaldo | 456 
-Arnaldo | 456 
-Arnaldo | 456 
-Arnaldo | 456 
-Arnaldo | 456 
-Arnaldo | 456 | Dias alugado: 1
-Arnaldo | 456 | Dias alugado: -1210146400
-Arnaldo | 456 | Dias alugado: -276061488
-Arnaldo | 456 | Dias alugado: -1229675824
-Arnaldo | 456 | Dias alugado: 1513923280
-Arnaldo | 456 | Dias alugado: -1500732720
-Arnaldo | 456 | Dias alugado: -1132158080
-Arnaldo | 456 | Dias alugado: -386227504
-Arnaldo | 456 | Dias alugado: 524592000
-Arnaldo | 456 | Dias alugado: 858104528
-Arnaldo | 456 | Dias alugado: 1499898576
-Lima | 4 | Dias alugado: -9
-Arnaldo | 456 | Dias alugado: 1043636944
-ASD | 123 | Dias alugado: -9
-Arnaldo | 456 | Dias alugado: -1620139312
-asd | 13 | Dias alugado: -9
-Arnaldo | 456 | Dias alugado: 170173136
-asdasd | 234 | Dias alugado: -9
-Arnaldo | 456 | Dias alugado: 1986241232
-qq | 244 | Dias alugado: -9
+L MAO
+Arnaldo | 456 | Dias alugado: 454926672
+Arnaldo | 456 | Dias alugado: -548551152
+avela | 3 | 3 | NINJA
+a | 3 | 3 | a
+Asd | 1 | 2 | 4wqwe
+Minhoca | 1 | 2 | 3
+L | 3 | 2 | 1
+
+/* Assertivas de entrada
+	 - Lidar com os dados de um cliente.
+   Assertivas de saida
+	 - O programa aborta com saída -1.
+	 - O programa nao retorna nada.
+*/
+
+void cadastraCliente(char* nome, int cpf, int celular, char* endereco){ // Recebe no parametros 'nome', 'cpf', 'celular' e 'endereco', respectivamente, o nome, cpf, celular e endereco do cliente. 
+	if (contaDigitos() != 11) {
+		printf("CPF requer 11 digitos !\n");
+		exit(-1);
+	}
