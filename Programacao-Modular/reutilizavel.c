@@ -14,6 +14,8 @@
 	 - O retorna arquivo aberto no modo escolhido. 
 */
 
+// Interface com o usuário:  "Erro ao abrir o arquivo  <NOME DE ARQUIVO> no modo  <MODO DE ABERTURA>  ! Parametro 'nome' nulo.\n"
+
 FILE* abreArq(char* arqNome, char* mode) { // Parametro 'arqNome' recebe o nome do arquivo e 'mode' o modo de acesso, isto e, leitura, escrita, append ...
 	FILE* arq = fopen(arqNome, mode); // A variavel arq recebe o arquivo aberto pelo comando fopen conforme os parametros da funcao.
 	if (arq == NULL) { // Se a variavel for NULL a funcao nao conseguiu adquirir tudo que precisava.
@@ -22,41 +24,3 @@ FILE* abreArq(char* arqNome, char* mode) { // Parametro 'arqNome' recebe o nome 
 	}
 	return arq;   // Retorna parametro
 }
-
-// Interface com o usuário:  "Erro ao abrir o arquivo  <NOME DE ARQUIVO> no modo  <MODO DE ABERTURA>  ! Parametro 'nome' nulo.\n"
-
-
-
-
-
-/* Conta digitos */
-
-/* Requisitos
-	- Receber um numero e contar seus digitos.
-*/
-
-/* Assertivas de entrada
-	 - Receber um numero.
-   Assertivas de saida
-	 - Retornar o número de digitos.
-*/
-
-int contaDigitos(double numero){ // O parametro 'numero' trará o numero a ter os digitos contados.
-	int contador = 0;
-	while (numero !=0) {
-		printf("Numero: %d Contador %d\n", numero, contador);
-		numero = numero / 10.0;
-		contador++;
-	}
-
-	return contador; // retorna os digitos.
-}
-
-
-
-
-
-
-
-
-

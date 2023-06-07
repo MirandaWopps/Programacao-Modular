@@ -2,10 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "cliente.h"
-//#include "reutilizavel.h"
-//#include "estoque.h"
-
 #include "reutilizavel.h"
+//#include "estoque.h"
 
 typedef struct jogo Jogo;
 struct jogo {
@@ -14,55 +12,39 @@ struct jogo {
 };
 
 
-// Nome/Objetivo: void controlaAluguel
-// Requsitos: Receber 
-// Assertivas de acoplamento: 
-//    Entrada -
-//    Saida - 
-// Acoplamento: nomeJogo recebe o nome do jogo que o estoque agira em cima || ato recebe 'a' de aluguel ou 'd' de devolucao para operacao logica no estoque.
-// Interface com  o usuario:  
-
-/*
-void controlaAlguel(char* nomeJogo , char ato) {
-
-	Jogo* jogoQuery = (Jogo*)malloc( sizeof(Jogo) ); // um ponteiro para rodar o arquivo.
-	FILE* tempSearch;
-	switch (ato)
-	{
-	case 'a':
-
-	case 'd':
-		tempSearch = abreArq("" , "w");
-
-	default: 
-
-		break;
-	}
-
-	
-	if ( strcmp(nomeJogo,jogoQuery->nome) == 0  ){}
-		if (Jogo->disponibilidade == 0) {
-
-
-		}
-		antigo asterisico/
-
-
-		free(jogoQuery);// libera memoria do search
-}
-
-*/
-
-
 int main(void) {
 	// variaveis quando cadastra cliente for ser utilizado
-	char cadastraNome[40], endereco[80];
-	int cpf, celular;
+	char cadastraNome[40], endereco[80], cpf[12], celular[16];
 	int opcaoInterface = 0;
-	char valtest[11] = "1234567890";
 
-	
+
+
+	printf("Bem vindo a Locadora !\n"); // Introducao
+
+	cadastraCliente("Lucas", "12345678991", "+5521974328709", "Rua X");
+
+
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
 	printf("%d\n", strlen(valtest) );
+	printf("conta digitos %d\n", contaDigitos(valtest2));
 	// Testando cadastro
 	printf("Bem vindo a nossa Locadora !:)\n"); // tst
 	printf("  - O que desejas ? \n");
@@ -94,7 +76,7 @@ int main(void) {
 			
 	}
 
-
+	*/
 
 	/*
 	printf(" - Jogos disponíveis :\n");
@@ -113,7 +95,10 @@ int main(void) {
 	printf("    13. Battle for Rokugan\n");
 	printf("    14. Majong\n");
 	printf("    15. Shogi\n");
-	*/
+	
 
 	return 0;
 }
+
+
+*/

@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "cliente.h"
 #include "reutilizavel.h"
 
@@ -15,24 +17,36 @@
 	 - O programa nao retorna nada.
 */
 
-void cadastraCliente(char* nome, int cpf, int celular, char* endereco) { // Recebe no parametros 'nome', 'cpf', 'celular' e 'endereco', respectivamente, o nome, cpf, celular e endereco do cliente. 
-	printf("%d", contaDigitos(cpf));
-	if (contaDigitos(cpf) != 11) {
-		printf("CPF requer 11 digitos !\n");
+void cadastraCliente(char* nome, char* cpf, char* celular, char* endereco) { // Recebe no parametros 'nome', 'cpf', 'celular' e 'endereco', respectivamente, o nome, cpf, celular e endereco do cliente. 
+	if (strlen(cpf) != 11) {           // se cpf diferente de 11 digitos
+		printf("CPF SEM 11 DIGITOS");
 		exit(-1);
 	}
-	FILE* file = abreArq("Cadastros Clientes.txt", "a");
-	fprintf(file, "%s | %d | %d | %s\n", nome, cpf, celular, endereco);
+
+	if (nome == "") {
+		printf("NOME VAZIO");
+		exit(-2);
+	}
+
+	if (celular == "") {
+		printf("CELULAR VAZIO");
+		exit(-3);
+	}
+
+	if (strlen(endereco) < 9) {
+		printf("ENDERECO COM MENOS DE 9 DIGITOS");
+		exit(-4);
+	}
+
+	FILE* file = abreArq("arquivo.txt", "a");
+	fprintf(file, "%s | %s | %s | %s\n", nome, cpf, celular, endereco);
 
 	fclose(file);
 	printf("Dados guardados !\n");
-	return ; 
+	return;
 }
 
-// Interface com o usuario: "nome | cpf | celular | endereco"       "Dados guardados"      
-
-
-
+// Interface com o usuario: "nome | cpf | celular | endereco"       "Dados guardados"       "CPF SEM 11 DIGITOS"
 
 
 int alugaPeriodoCliente(int dias){
