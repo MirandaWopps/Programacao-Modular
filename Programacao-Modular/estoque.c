@@ -39,7 +39,7 @@ void imprimeEstoque(Estoque* lista){
         aux = aux->prox;
     }
 }
-
+/*
 int main(){
 	Estoque* lista = NULL;
 	Jogo dado;
@@ -53,6 +53,8 @@ int main(){
 
 	return 0;
 }
+
+
 
 
 // Nome/Objetivo: void controlaAluguel

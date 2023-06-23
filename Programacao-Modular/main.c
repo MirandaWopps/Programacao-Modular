@@ -3,6 +3,7 @@
 #include <string.h>
 #include "cliente.h"
 #include "reutilizavel.h"
+#include "financas.h"
 //#include "estoque.h"
 
 typedef struct jogo Jogo;
@@ -16,29 +17,17 @@ int main(void) {
 	// variaveis quando cadastra cliente for ser utilizado
 	char cadastraNome[40], endereco[80], cpf[12], celular[16];
 	int opcaoInterface = 0;
-
+	float testaFinancas=0;
 
 
 	printf("Bem vindo a Locadora !\n"); // Introducao
-
-	cadastraCliente("Lucas", "12345678991", "+5521974328709", "Rua X");
-
-
+	printf("");
+	//testaFinancas = consultaValor();
+	editaValor(0);
+	//cadastraCliente("Lucas", "12345678991", "+5521974328709", "Rua X");
 
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

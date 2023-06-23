@@ -16,6 +16,7 @@
 	 - O programa aborta com saída -1.
 	 - O programa nao retorna nada.
 */
+// Interface com o usuario: "nome | cpf | celular | endereco"       "Dados guardados"       "CPF SEM 11 DIGITOS"   "NOME VAZIO"     "CELULAR VAZIO"    "ENDERECO COM MENOS DE 9 DIGITOS"      "ENDERECO COM MENOS DE 9 DIGITOS"
 
 void cadastraCliente(char* nome, char* cpf, char* celular, char* endereco) { // Recebe no parametros 'nome', 'cpf', 'celular' e 'endereco', respectivamente, o nome, cpf, celular e endereco do cliente. 
 	if (strlen(cpf) != 11) {           // se cpf diferente de 11 digitos
@@ -45,8 +46,6 @@ void cadastraCliente(char* nome, char* cpf, char* celular, char* endereco) { // 
 	printf("Dados guardados !\n");
 	return;
 }
-
-// Interface com o usuario: "nome | cpf | celular | endereco"       "Dados guardados"       "CPF SEM 11 DIGITOS"
 
 
 int alugaPeriodoCliente(int dias){

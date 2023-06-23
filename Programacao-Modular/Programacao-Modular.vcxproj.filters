@@ -27,6 +27,9 @@
     <ClCompile Include="estoque.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="financas.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cliente.h">
@@ -38,12 +41,21 @@
     <ClInclude Include="estoque.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="financas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Cadastros Clientes.txt">
       <Filter>Source Files</Filter>
     </Text>
     <Text Include="Estoque.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="listaAlugueis.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="balance.txt">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>
