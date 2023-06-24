@@ -144,6 +144,7 @@ void imprimeEstoque(Estoque* lista) {
         aux = aux->prox;
     }
 }
+<<<<<<< HEAD
 /*  Nome: geraJson
     Objetivo: Coloca um bloco de texto em um arquivo Json 
 
@@ -262,6 +263,9 @@ Estoque* alteraEstoque(Estoque* lista){
 }
 
 
+=======
+/*
+>>>>>>> 63c914ef94a368e6463b59d970a0792b606e5b85
 int main(){
 
 	char* nomeArquivo = "estoque.json";
@@ -281,6 +285,12 @@ int main(){
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 63c914ef94a368e6463b59d970a0792b606e5b85
 // Nome/Objetivo: void controlaAluguel
 // Requsitos: Receber 
 // Assertivas de acoplamento: 

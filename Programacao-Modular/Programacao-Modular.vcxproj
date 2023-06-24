@@ -142,17 +142,21 @@
   <ItemGroup>
     <ClCompile Include="cliente.c" />
     <ClCompile Include="estoque.c" />
+    <ClCompile Include="financas.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="reutilizavel.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cliente.h" />
     <ClInclude Include="estoque.h" />
+    <ClInclude Include="financas.h" />
     <ClInclude Include="reutilizavel.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="balance.txt" />
     <Text Include="Cadastros Clientes.txt" />
     <Text Include="Estoque.txt" />
+    <Text Include="listaAlugueis.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
