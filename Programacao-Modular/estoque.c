@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "estoque.h"
+#include "cJson.h"
 //#include "reutilizavel.h"
 
 // comentario dfghjdfghj
@@ -150,6 +151,70 @@ void imprimeEstoque(Estoque* lista) {
         aux = aux->prox;
     }
 }
+
+Estoque* alteraEstoque(Estoque* lista){
+
+    Jogo dado;
+    int codigo;
+    //printf("==== Estoque ====\n");
+    imprimeEstoque(lista);
+
+    printf("\nDigite o codigo do produto a ser alterado: ");
+    scanf("%d", &codigo);
+    //printf("\n%d", codigo);
+
+    Estoque* aux = lista;
+    for(int i = 0; aux != NULL; i++){
+        if(aux->dados.codigo == codigo){
+            printf("\n== Produto a ser alterado ==\n");
+            printf("Nome: %s\nCodigo: %d\nDisponibilidade: %d\n", aux->dados.nome,aux->dados.codigo, aux->dados.disponibilidade);
+            int x; 
+
+            printf("\n== Alteracao ==");
+            printf("\n1 - Nome\n2- Codigo\n3- Preco\n4- Disponibilidade");
+            printf("\nEscolha o campo a ser alterado: ");
+            scanf("%d", &x);
+            
+            switch (x)
+            {
+                char auxNome[20];
+            case 1:
+                printf("Digite o novo nome: ");
+                scanf(" %19[^\n]", auxNome);
+                strcpy(aux->dados.nome, auxNome);
+                printf("\nNome alterado\n");
+                break;
+            case 2:
+                //printf("Altera Codigo\n");
+                printf("Digite o valor do codigo: ");
+                scanf("%d", &aux->dados.codigo);
+                printf("\nCodigo alterado\n");
+                break;
+            case 3:
+                //printf("Altera Codigo\n");
+                printf("Digite o valor do preco: ");
+                scanf("%f", &aux->dados.preco);
+                printf("\nCodigo alterado\n");
+                break;
+            case 4:
+                printf("Digite o valor da disponibilidade: ");
+                scanf("%d", &aux->dados.disponibilidade);
+                printf("\nDisponibilidade alterada\n");
+                break;
+            
+            default:
+                break;
+            }
+            break;
+        }
+        aux = aux->prox;
+    }
+    
+
+    return lista;
+}
+
+
 /*  Nome: geraJson
     Objetivo: Coloca um bloco de texto em um arquivo Json 
 
@@ -281,5 +346,5 @@ void registraAluguel(char* cpf, int dias, char* nomeJogo) { // Recebe no paramet
 //    Saida - 
 // Acoplamento: nomeJogo recebe o nome do jogo que o estoque agira em cima || ato recebe 'a' de aluguel ou 'd' de devolucao para operacao logica no estoque.
 // Interface com  o usuario:  
-
+*/
 

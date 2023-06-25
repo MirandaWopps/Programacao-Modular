@@ -6,7 +6,6 @@ struct jogo {               // Estrutura jogo
     float preco;
 };typedef struct jogo Jogo; //
 
-<<<<<<< HEAD
 struct estoque{
     Jogo dados;
     struct estoque* prox;
@@ -16,11 +15,4 @@ Jogo preencheDado(char* nome, int codigo, int qntd);
 Estoque* criaNo(Jogo dado);
 void insereNo(Estoque** lista, Jogo dado);
 void imprimeEstoque(Estoque* lista);
-=======
-struct estoque{                   // Lista encadeada de jogos      
-    Jogo dados;                   // 
-    struct estoque* prox;         // 
-};typedef struct estoque Estoque; // 
-
 void registraAluguel(char* cpf, int dias, char* nomeJogo);
->>>>>>> Controle de aluguel pronto e função inútil no módulo cliente apagada.
