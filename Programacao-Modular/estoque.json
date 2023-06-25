@@ -1,21 +1,26 @@
 [{
 		"nome":	"Jogo1",
 		"codigo":	1,
+		"preco":	1.5,
 		"disponibilidade":	2
 	}, {
 		"nome":	"Jogo2",
 		"codigo":	2,
-		"disponibilidade":	1
+		"preco":	1,
+		"disponibilidade":	2
 	}, {
 		"nome":	"Jogo3",
 		"codigo":	3,
-		"disponibilidade":	0
+		"preco":	1,
+		"disponibilidade":	2
 	}, {
 		"nome":	"Jogo4",
 		"codigo":	4,
+		"preco":	1,
 		"disponibilidade":	2
 	}, {
 		"nome":	"Jogo5",
 		"codigo":	5,
-		"disponibilidade":	0
+		"preco":	1,
+		"disponibilidade":	2
 	}]

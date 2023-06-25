@@ -100,7 +100,9 @@ Estoque* leArquivoJSON(char* nomeArquivo) {
 		// Pega os elementos para serem adicionados e coloca em um auxiliar
         cJSON* nomeJson = cJSON_GetObjectItem(noJson, "nome");
         cJSON* codigoJson = cJSON_GetObjectItem(noJson, "codigo");
+        cJSON* precoJson = cJSON_GetObjectItem(noJson, "preco");
         cJSON* dispJson = cJSON_GetObjectItem(noJson, "disponibilidade");
+        
 
         if (nomeJson && codigoJson && dispJson) {
 			// atribui os elementos na struct jogo
@@ -108,6 +110,7 @@ Estoque* leArquivoJSON(char* nomeArquivo) {
 			strcpy(jogo.nome, nomeJson->valuestring);
             jogo.codigo = codigoJson->valueint;
             jogo.disponibilidade = dispJson->valueint;
+            jogo.preco = precoJson->valuedouble;
 
 			// adiciona na lista encadeada, passando a struct preenchida
             insereNo(&lista, jogo);
@@ -140,11 +143,10 @@ void imprimeEstoque(Estoque* lista) {
     Estoque* aux = lista;
     printf("==== Estoque ====\n");
     while (aux != NULL) {
-        printf("Codigo: %d - Nome: %s - Disponibilidade: %d\n", aux->dados.codigo, aux->dados.nome, aux->dados.disponibilidade);
+        printf("Codigo: %d - Nome: %s - Preco: %.2f - Disponibilidade: %d\n", aux->dados.codigo, aux->dados.nome, aux->dados.preco, aux->dados.disponibilidade);
         aux = aux->prox;
     }
 }
-<<<<<<< HEAD
 /*  Nome: geraJson
     Objetivo: Coloca um bloco de texto em um arquivo Json 
 
@@ -189,6 +191,7 @@ void estoqueJson(Estoque* lista) {
         cJSON* noJson = cJSON_CreateObject();
         cJSON_AddStringToObject(noJson, "nome", aux->dados.nome);
         cJSON_AddNumberToObject(noJson, "codigo", aux->dados.codigo);
+        cJSON_AddNumberToObject(noJson, "preco", aux->dados.preco);
         cJSON_AddNumberToObject(noJson, "disponibilidade", aux->dados.disponibilidade);
         cJSON_AddItemToArray(listaJson, noJson);
         aux = aux->prox;
@@ -225,7 +228,7 @@ Estoque* alteraEstoque(Estoque* lista){
             int x; 
 
             printf("\n== Alteracao ==");
-            printf("\n1 - Nome\n2- Codigo\n3- Disponibilidade");
+            printf("\n1 - Nome\n2- Codigo\n3- Preco\n4- Disponibilidade");
             printf("\nEscolha o campo a ser alterado: ");
             scanf("%d", &x);
             
@@ -245,6 +248,12 @@ Estoque* alteraEstoque(Estoque* lista){
                 printf("\nCodigo alterado\n");
                 break;
             case 3:
+                //printf("Altera Codigo\n");
+                printf("Digite o valor do preco: ");
+                scanf("%f", &aux->dados.preco);
+                printf("\nCodigo alterado\n");
+                break;
+            case 4:
                 printf("Digite o valor da disponibilidade: ");
                 scanf("%d", &aux->dados.disponibilidade);
                 printf("\nDisponibilidade alterada\n");
@@ -263,9 +272,6 @@ Estoque* alteraEstoque(Estoque* lista){
 }
 
 
-=======
-/*
->>>>>>> 63c914ef94a368e6463b59d970a0792b606e5b85
 int main(){
 
 	char* nomeArquivo = "estoque.json";
@@ -285,12 +291,6 @@ int main(){
 	return 0;
 }
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 63c914ef94a368e6463b59d970a0792b606e5b85
 // Nome/Objetivo: void controlaAluguel
 // Requsitos: Receber 
 // Assertivas de acoplamento: 

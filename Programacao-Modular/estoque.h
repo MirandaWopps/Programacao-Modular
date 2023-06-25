@@ -2,6 +2,7 @@ struct jogo {               // Estrutura jogo
 	char nome[20];          //   Nome - 20 caracteres 
     int codigo;             //   codigo                        - int
 	int disponibilidade;    //   disponibilidade ou quantidade - int
+    float preco;
 };typedef struct jogo Jogo; //
 
 struct estoque{
