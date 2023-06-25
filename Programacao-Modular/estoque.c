@@ -3,7 +3,8 @@
 #include <string.h>
 #include "estoque.h"
 #include "cJson.h"
-//#include "reutilizavel.h"
+#include "cliente.h"
+#include "reutilizavel.h"
 
 // comentario dfghjdfghj
 //   sdfgjdvcvb
@@ -106,6 +107,7 @@ Estoque* leArquivoJSON(char* nomeArquivo) {
         cJSON* codigoJson = cJSON_GetObjectItem(noJson, "codigo");
         cJSON* precoJson = cJSON_GetObjectItem(noJson, "preco");
         cJSON* dispJson = cJSON_GetObjectItem(noJson, "disponibilidade");
+        cJSON* demandaJson = cJSON_GetObjectItem(noJson, "demanda");
         
 
         if (nomeJson && codigoJson && dispJson) {
@@ -115,6 +117,7 @@ Estoque* leArquivoJSON(char* nomeArquivo) {
             jogo.codigo = codigoJson->valueint;
             jogo.disponibilidade = dispJson->valueint;
             jogo.preco = precoJson->valuedouble;
+            jogo.demanda = demandaJson->valueint;
 
 			// adiciona na lista encadeada, passando a struct preenchida
             insereNo(&lista, jogo);
@@ -147,9 +150,14 @@ void imprimeEstoque(Estoque* lista) {
     Estoque* aux = lista;
     printf("==== Estoque ====\n");
     while (aux != NULL) {
-        printf("Codigo: %d - Nome: %s - Preco: %.2f - Disponibilidade: %d\n", aux->dados.codigo, aux->dados.nome, aux->dados.preco, aux->dados.disponibilidade);
+        printf("Codigo: %d - Nome: %s - Preco: %.2f - Disponibilidade: %d", aux->dados.codigo, aux->dados.nome, aux->dados.preco, aux->dados.disponibilidade);
+        if (aux->dados.disponibilidade == 0)
+            printf(" - Demanda: %d", aux->dados.demanda);
+        printf("\n");
+
         aux = aux->prox;
     }
+    printf("\n");
 }
 
 Estoque* alteraEstoque(Estoque* lista){
@@ -261,6 +269,7 @@ void estoqueJson(Estoque* lista) {
         cJSON_AddNumberToObject(noJson, "codigo", aux->dados.codigo);
         cJSON_AddNumberToObject(noJson, "preco", aux->dados.preco);
         cJSON_AddNumberToObject(noJson, "disponibilidade", aux->dados.disponibilidade);
+        cJSON_AddNumberToObject(noJson, "demanda", aux->dados.demanda);
         cJSON_AddItemToArray(listaJson, noJson);
         aux = aux->prox;
     }
@@ -272,6 +281,108 @@ void estoqueJson(Estoque* lista) {
     }
 	geraJson(textoJson, "estoque.json");
 }
+
+int buscaLista(Estoque* lista, int codigo){
+    Estoque* aux = lista;
+    for(int i = 0; aux != NULL; i++){
+        if(aux->dados.codigo == codigo){
+            if(aux->dados.disponibilidade == 0){
+                aux->dados.demanda++;
+                if(aux->dados.demanda >= 3){
+                    // Solicita para o fornecedor
+                    printf("Solicitado para o fornecedor\n");
+                }
+                return -1;
+            }
+            else
+                return 1;
+        }
+        aux = aux->prox;
+    }
+    return 0;
+}
+
+void registraAluguel(Estoque* lista) {
+    /*
+        Coisas p/ fzr:
+            4 - Se a demanda for acima de 3, pede para o fornecedor
+            5 - Se o jogo nao existir na base de dados, mandar uma nota p/ os fornecedores e criar um espaco para o jogo
+    */
+
+
+	char cpf[12];     // variaveis para registrar aluguel
+    int dias = 0, codigo, aux = 0;
+    while(aux == 0){
+        printf("  	Qual codigo do jogo ?\n");
+        scanf("%d", &codigo);
+        //printf("%d\n", codigo);
+        aux = buscaLista(lista, codigo);
+        //printf("%d\n", aux);
+        if(aux == 0){
+            printf("Jogo nao encontrado\n");
+            imprimeEstoque(lista);
+        }
+        if(aux == -1){
+            printf("\nJogo sem disponibilidade\n\n");
+            return;
+        }
+            
+    }
+    aux = 0;
+    //printf("%d\n", aux);
+    
+    while(aux == 0){
+        printf("     Quantos dias o alguel (1 ou 7 dias)?\n");
+        scanf("%d", &dias);
+        if (dias != 1 && dias != 7) {
+            printf("O aluguel nao e de 7 nem de 1 dia.\n");
+        }
+        else
+            aux = 1;
+
+    }
+    aux = 0;
+    //printf("%d\n", aux);
+
+    
+    if(dias == 7){
+        while(aux == 0){
+                // conferir cadastro
+                printf("    Qual cpf do cliente ?\n");
+                scanf(" %11[^\n]", cpf);
+            if (strlen(cpf) != 11) {           // se cpf diferente de 11 digitos
+                printf("CPF SEM 11 DIGITOS\n");
+                printf("cpf inserido: %s - %d digitos", cpf, strlen(cpf));
+            }
+            else
+                aux = confereCPF(cpf);
+                if(aux == -1){
+                    printf("O cliente nao esta cadastrado, cadastre ele primeiro\n\n");
+                    return;
+                }
+        }
+    }
+    else
+        strcpy(cpf, "");
+
+    Estoque* auxL = lista;
+    for(int i = 0; auxL != NULL; i++){
+        if(auxL->dados.codigo == codigo){
+            auxL->dados.disponibilidade--;
+            break;
+        }
+        auxL = auxL->prox;
+    }
+    
+	FILE* file = abreArq("listaAlugueis.txt", "a"); 
+	fprintf(file, "%s | %d | %s | %d\n", cpf, dias, __DATE__, codigo);
+	fclose(file);
+	printf("Dados salvos !\n");
+
+    printf("\n     /\n");
+			printf("   \\/ Aluguel registrado com sucesso !\n");
+}
+
 /*
 int main(){
 	Estoque* lista = NULL;

@@ -4,6 +4,7 @@ struct jogo {               // Estrutura jogo
     int codigo;             //   codigo                        - int
 	int disponibilidade;    //   disponibilidade ou quantidade - int
     float preco;
+    int demanda;
 };typedef struct jogo Jogo; //
 
 struct estoque{
@@ -15,4 +16,7 @@ Jogo preencheDado(char* nome, int codigo, int qntd);
 Estoque* criaNo(Jogo dado);
 void insereNo(Estoque** lista, Jogo dado);
 void imprimeEstoque(Estoque* lista);
-void registraAluguel(char* cpf, int dias, char* nomeJogo);
+void registraAluguel(Estoque* lista);
+Estoque* leArquivoJSON(char* nomeArquivo);
+void estoqueJson(Estoque* lista);
+Estoque* alteraEstoque(Estoque* lista);
