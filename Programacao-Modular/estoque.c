@@ -2,8 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "estoque.h"
-#include "cJSON.h"
-#include "reutilizavel.h"
+//#include "reutilizavel.h"
+
+// comentario dfghjdfghj
+//   sdfgjdvcvb
+
 
 /*
 	Compilacao: gcc -o "nome_executavel" "nome_arquivo.c" cJSON/cJSON.c -IcJSON -LcJSON -lcjson
@@ -13,7 +16,7 @@
 */
 
 /*  Nome: criaNo
-    Objetivo: Funcao auxiliar para criar um novo nó
+    Objetivo: Funcao auxiliar para criar um novo n�
     Requisitos: 
 	    Criar um estoque
 
@@ -35,7 +38,7 @@ Estoque* criaNo(Jogo dado) {
 }
 
 /*  Nome: insereNo
-    Objetivo: Insere um nó no início da lista encadeada
+    Objetivo: Insere um n� no in�cio da lista encadeada
 
     Requisitos: 
 	    Criar um estoque
@@ -52,7 +55,7 @@ void insereNo(Estoque** lista, Jogo dado) {
 }
 
 /*  Nome: leArquivoJSON
-    Objetivo: Lê o arquivo JSON e cria a lista encadeada 
+    Objetivo: L� o arquivo JSON e cria a lista encadeada 
 
     Requisitos: 
 	*******
@@ -204,71 +207,19 @@ void estoqueJson(Estoque* lista) {
     }
 	geraJson(textoJson, "estoque.json");
 }
+/*
+int main(){
+	Estoque* lista = NULL;
+	Jogo dado;
+	
+	dado = preencheDado("Teste", 1, 2);
+	insereNo(&lista, dado);
+	dado = preencheDado("Teste2", 2, 0);
+	insereNo(&lista, dado);
+	imprimeEstoque(lista);
 
 
-
-
-
-Estoque* alteraEstoque(Estoque* lista){
-
-    Jogo dado;
-    int codigo;
-    //printf("==== Estoque ====\n");
-    imprimeEstoque(lista);
-
-    printf("\nDigite o codigo do produto a ser alterado: ");
-    scanf("%d", &codigo);
-    //printf("\n%d", codigo);
-
-    Estoque* aux = lista;
-    for(int i = 0; aux != NULL; i++){
-        if(aux->dados.codigo == codigo){
-            printf("\n== Produto a ser alterado ==\n");
-            printf("Nome: %s\nCodigo: %d\nDisponibilidade: %d\n", aux->dados.nome,aux->dados.codigo, aux->dados.disponibilidade);
-            int x; 
-
-            printf("\n== Alteracao ==");
-            printf("\n1 - Nome\n2- Codigo\n3- Preco\n4- Disponibilidade");
-            printf("\nEscolha o campo a ser alterado: ");
-            scanf("%d", &x);
-            
-            switch (x)
-            {
-                char auxNome[20];
-            case 1:
-                printf("Digite o novo nome: ");
-                scanf(" %19[^\n]", auxNome);
-                strcpy(aux->dados.nome, auxNome);
-                printf("\nNome alterado\n");
-                break;
-            case 2:
-                //printf("Altera Codigo\n");
-                printf("Digite o valor do codigo: ");
-                scanf("%d", &aux->dados.codigo);
-                printf("\nCodigo alterado\n");
-                break;
-            case 3:
-                //printf("Altera Codigo\n");
-                printf("Digite o valor do preco: ");
-                scanf("%f", &aux->dados.preco);
-                printf("\nCodigo alterado\n");
-                break;
-            case 4:
-                printf("Digite o valor da disponibilidade: ");
-                scanf("%d", &aux->dados.disponibilidade);
-                printf("\nDisponibilidade alterada\n");
-                break;
-            
-            default:
-                break;
-            }
-            break;
-        }
-        aux = aux->prox;
-    }
-    
-
-    return lista;
+	return 0;
 }
 
 
@@ -291,6 +242,38 @@ int main(){
 	return 0;
 }
 
+
+
+
+
+
+void registraAluguel(char* cpf, int dias, char* nomeJogo) { // Recebe no parametros 'nome', 'cpf', 'celular' e 'endereco', respectivamente, o nome, cpf, celular e endereco do cliente. 
+	if (strlen(cpf) != 11) {           // se cpf diferente de 11 digitos
+		printf("cpf inserido: %s - %d digitos", cpf, strlen(cpf));
+		printf("CPF SEM 11 DIGITOS");
+		exit(-7);
+	}
+
+	if (dias != 1 && dias != 7) {
+		printf("O aluguel nao e de 7 nem de 1 dia.\n");
+		exit(-8);
+	}
+
+	if (strlen(nomeJogo) <= 3) {
+		printf("CAMPO nomeJogo menor que 3 caracteres. Abortando...\n");
+		exit(-9);
+	}
+
+
+	FILE* file = abreArq("listaAlugueis.txt", "a"); 
+	fprintf(file, "%s | %d | %s | %s\n", cpf, dias, __DATE__, nomeJogo);
+	fclose(file);
+	printf("Dados salvos !\n");
+}
+
+
+
+
 // Nome/Objetivo: void controlaAluguel
 // Requsitos: Receber 
 // Assertivas de acoplamento: 
@@ -299,33 +282,4 @@ int main(){
 // Acoplamento: nomeJogo recebe o nome do jogo que o estoque agira em cima || ato recebe 'a' de aluguel ou 'd' de devolucao para operacao logica no estoque.
 // Interface com  o usuario:  
 
-/*
-void controlaAlguel(char* nomeJogo , char ato) {
 
-	Jogo* jogoQuery = (Jogo*)malloc( sizeof(Jogo) ); // um ponteiro para rodar o arquivo.
-	FILE* tempSearch;
-	switch (ato)
-	{
-	case 'a':
-
-	case 'd':
-		tempSearch = abreArq("" , "w");
-
-	default:
-
-		break;
-	}
-
-
-	if ( strcmp(nomeJogo,jogoQuery->nome) == 0  ){}
-		if (Jogo->disponibilidade == 0) {
-
-
-		}
-		antigo asterisico/
-
-
-		free(jogoQuery);// libera memoria do search
-}
-
-*/
