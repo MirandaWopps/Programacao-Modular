@@ -1,4 +1,5 @@
 #include "financas.h"
+#include <string.h>
 
 /* Funcao: editaValor
 // Requisitos:
@@ -7,10 +8,10 @@
 
     - Assertivas de entrada:
         Valores que abrajam o tipo float.
-    - Assertivas de saída:
+    - Assertivas de saï¿½da:
         O arquivo edita ficando com o novo valor.
 
-Interface com usuário: "Antigo saldo: <valorLido>"   "Novo saldo: <novoValor>\n\n"   "Erro: parametro '0' nao permitido ! Abortando.\n"
+Interface com usuï¿½rio: "Antigo saldo: <valorLido>"   "Novo saldo: <novoValor>\n\n"   "Erro: parametro '0' nao permitido ! Abortando.\n"
 */
 void editaValor(float valorInserido) { // valor inserido pelo usuario a ser calculado com o valor registrado em arquivo que pode ser negativo ou positivo.
     float novoValor, valorLido = 0;  // variaveis para valor calculado 
@@ -42,10 +43,10 @@ void editaValor(float valorInserido) { // valor inserido pelo usuario a ser calc
     - Assertivas de entrada:
         Void
 
-    - Assertivas de saída:
+    - Assertivas de saï¿½da:
         Retorna valor float representando o saldo.
 
-Interface com usuário: "Valor consultado: <QUERY>\n\n"
+Interface com usuï¿½rio: "Valor consultado: <QUERY>\n\n"
 */
 float consultaValor() {
     float query; // inicializa variavel a deter valor da busca
@@ -56,4 +57,21 @@ float consultaValor() {
     printf("Valor consultado: %.2f\n", query);
 
     return query; // retorna valor escaneado
+}
+
+float inicializaSaldo(){
+    float query; // inicializa variavel a deter valor da busca
+    FILE* arq = abreArq("balance.txt", "r"); // recebe o arquivo aberto no modo read
+    fscanf(arq, "%f", &query);  // escaneia o numero para dentro da var query  
+    fclose(arq); // fecha arq
+    //printf("Valor consultado: %.2f\n", query);
+    return query; // retorna valor escaneado
+}
+
+void salvaSaldo(){
+    // Salva o saldo
+    FILE* arqWrite = abreArq("balance.txt", "w"); // inicia escrita
+    fprintf(arqWrite, "%f", saldo); // escreve o valor calculado
+    fclose(arqWrite); // fecha arquivo
+    //printf("Saldo salvo com sucesso\n");
 }

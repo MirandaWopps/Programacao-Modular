@@ -5,6 +5,8 @@
 #include "cJson.h"
 #include "cliente.h"
 #include "reutilizavel.h"
+#include "financas.h"
+#include "fornecedor.h"
 
 // comentario dfghjdfghj
 //   sdfgjdvcvb
@@ -291,6 +293,7 @@ int buscaLista(Estoque* lista, int codigo){
                 if(aux->dados.demanda >= 3){
                     // Solicita para o fornecedor
                     printf("Solicitado para o fornecedor\n");
+                    pedeFornecedor_wrapper(aux->dados.nome);
                 }
                 return -1;
             }
@@ -369,6 +372,7 @@ void registraAluguel(Estoque* lista) {
     for(int i = 0; auxL != NULL; i++){
         if(auxL->dados.codigo == codigo){
             auxL->dados.disponibilidade--;
+            saldo += auxL->dados.preco;
             break;
         }
         auxL = auxL->prox;
@@ -382,80 +386,3 @@ void registraAluguel(Estoque* lista) {
     printf("\n     /\n");
 			printf("   \\/ Aluguel registrado com sucesso !\n");
 }
-
-/*
-int main(){
-	Estoque* lista = NULL;
-	Jogo dado;
-	
-	dado = preencheDado("Teste", 1, 2);
-	insereNo(&lista, dado);
-	dado = preencheDado("Teste2", 2, 0);
-	insereNo(&lista, dado);
-	imprimeEstoque(lista);
-
-
-	return 0;
-}
-
-
-int main(){
-
-	char* nomeArquivo = "estoque.json";
-    
-
-	Estoque* lista = leArquivoJSON(nomeArquivo);
-
-	printf("Bem vindo a Locadora !\n"); // Header
-	//imprimeEstoque(lista);
-    lista = alteraEstoque(lista);
-	imprimeEstoque(lista);
-
-
-	//Salva o estoque em um arquivo json
-	estoqueJson(lista);
-
-	return 0;
-}
-
-
-
-
-
-
-void registraAluguel(char* cpf, int dias, char* nomeJogo) { // Recebe no parametros 'nome', 'cpf', 'celular' e 'endereco', respectivamente, o nome, cpf, celular e endereco do cliente. 
-	if (strlen(cpf) != 11) {           // se cpf diferente de 11 digitos
-		printf("cpf inserido: %s - %d digitos", cpf, strlen(cpf));
-		printf("CPF SEM 11 DIGITOS");
-		exit(-7);
-	}
-
-	if (dias != 1 && dias != 7) {
-		printf("O aluguel nao e de 7 nem de 1 dia.\n");
-		exit(-8);
-	}
-
-	if (strlen(nomeJogo) <= 3) {
-		printf("CAMPO nomeJogo menor que 3 caracteres. Abortando...\n");
-		exit(-9);
-	}
-
-
-	FILE* file = abreArq("listaAlugueis.txt", "a"); 
-	fprintf(file, "%s | %d | %s | %s\n", cpf, dias, __DATE__, nomeJogo);
-	fclose(file);
-	printf("Dados salvos !\n");
-}
-
-
-
-
-// Nome/Objetivo: void controlaAluguel
-// Requsitos: Receber 
-// Assertivas de acoplamento: 
-//    Entrada -
-//    Saida - 
-// Acoplamento: nomeJogo recebe o nome do jogo que o estoque agira em cima || ato recebe 'a' de aluguel ou 'd' de devolucao para operacao logica no estoque.
-// Interface com  o usuario:  
-*/
-

@@ -82,6 +82,8 @@ void cadastraCliente() { // Recebe no parametros 'nome', 'cpf', 'celular' e 'end
 
 	fclose(file);
 	printf("Dados guardados !\n");
+	printf("\n     /\n");
+	printf("   \\/ Cliente cadastrado com sucesso !\n");
 	return;
 }
 
