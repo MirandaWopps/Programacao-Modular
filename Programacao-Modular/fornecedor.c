@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include "fornecedor.h"
 #include "financas.h"
-#include <windows.h>
 #include "estoque.h"
 
 #define CAMINHO "arquivo.json"
